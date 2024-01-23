@@ -1,0 +1,348 @@
+2024-01-23T05:21:11Z INFO 3528 [root]: /home/ubuntu/.local/bin/neuronx-cc compile --target=trn1 --framework=XLA /tmp/ubuntu/neuroncc_compile_workdir/8b9b624b-eb6b-4e88-ba00-d1d5be32189b/model.MODULE_7572268680822998320+d41d8cd9.hlo_module.pb --output /tmp/ubuntu/neuroncc_compile_workdir/8b9b624b-eb6b-4e88-ba00-d1d5be32189b/model.MODULE_7572268680822998320+d41d8cd9.neff --verbose=35
+2024-01-23T05:21:11Z INFO 3535 [root]: TVM/Relay detected
+2024-01-23T05:21:11Z INFO 3535 [root]: Pipeline: Frontend HHChecker WalrusDriver BIRLinker Kelper
+2024-01-23T05:21:11Z INFO 3535 [root]: Intermediate files stored in /home/ubuntu/LightGlue/inf/neuronxcc-uvkivq86, output in /home/ubuntu/LightGlue/inf
+2024-01-23T05:21:11Z INFO 3535 [pipeline.Pipeline.0]: Job Pipeline len(in_states) 1
+2024-01-23T05:21:11Z INFO 3535 [pipeline.Pipeline.0]: Processing input #0
+2024-01-23T05:21:11Z INFO 3535 [pipeline.Pipeline.0]: Running pipeline Pipeline.0
+2024-01-23T05:21:11Z INFO 3535 [pipeline.Pipeline.0]: Starting job job.Frontend.0
+2024-01-23T05:21:11Z INFO 3535 [job.Frontend.0]: Job Frontend len(in_states) 1
+2024-01-23T05:21:11Z INFO 3535 [job.Frontend.0]: Processing input #0
+2024-01-23T05:21:11Z INFO 3535 [job.Frontend.0]: Start model loading
+2024-01-23T05:21:11Z INFO 3535 [job.Frontend.0]: IR signature: 53ee06d70031cb95b016403d786b704f6dd55916d0bb477058cbe947bd34a549 for model.MODULE_7572268680822998320+d41d8cd9.hlo_module.pb
+2024-01-23T05:21:11Z INFO 3535 [job.Frontend.0]: Executing: /home/ubuntu/.local/lib/python3.8/site-packages/neuronxcc/starfish/bin/hlo2penguin --input /tmp/ubuntu/neuroncc_compile_workdir/8b9b624b-eb6b-4e88-ba00-d1d5be32189b/model.MODULE_7572268680822998320+d41d8cd9.hlo_module.pb --out-dir ./ --output penguin.py --layers-per-module=1 --coalesce-all-gathers=false --coalesce-reduce-scatters=false --coalesce-all-reduces=false --emit-tensor-level-dropout-ops --emit-tensor-level-rng-ops
+2024-01-23T05:21:11Z INFO 3535 [job.Frontend.0]: DEBUG: needsModular? No. macCnt 25367412736
+INFO: Switching to single-module compile. PrePartitionPipe skipped.
+INFO: Found compute bound graph
+Replaced 0 dropout sequences with OffloadedDropout
+INFO: HloMacCount has found 25367412736
+INFO: Traffic has found 12333881
+INFO: AIF 4113.45
+HLO Ops used in computation: add batch-norm-training broadcast compare concatenate constant convert cosine custom-call divide dot exponential gather get-tuple-element logistic multiply negate parameter reduce reshape sine slice subtract transpose tuple 
+Invoking RemoveOptimizationBarriers pass
+
+2024-01-23T05:21:11Z USER 3535 [job.Frontend.0]: Compilation is optimized for best performance and compilation time. For faster compilation time please use -O1
+2024-01-23T05:21:11Z INFO 3535 [job.Frontend.0]: Start tensorization
+2024-01-23T05:21:11Z WARNING 3535 [job.Frontend.0]: TVM not detected.
+2024-01-23T05:21:11Z INFO 3535 [job.Frontend.0]: Num parallel jobs: 1
+2024-01-23T05:21:11Z INFO 3535 [root/Tensorizer/All]: Enter time region
+2024-01-23T05:21:11Z INFO 3535 [Tensorizer]: Frontend found a single CU. Switching to flat flow.
+2024-01-23T05:21:11Z INFO 3535 [Tensorizer]: Building model from Penguin script "penguin.py"...
+2024-01-23T05:21:11Z INFO 3535 [Tensorizer]: Tensorizer options: --disable-bitcasted-transpose --dont-verify-after-all --fp32-cast=matmult-bf16 --mm-transpose-type=fp32 --disable-expensive-checks --disable-max-stride-tiling --enable-replication --max-local-tensor-tile-size-in-bytes=32768 --tensor-layout-p-order=0 --tensor-layout-b-order=1 --enable-advanced-delinearization --weight-coalescing-threshold=512 --enable-bir-converter=enable --sunda-batchnorm --enable-tritium-loopfusion --keep-remat-dma-transpose --enable-softmax-kernel
+2024-01-23T05:21:11Z INFO 3535 [Tensorizer]: Building model from Penguin script "penguin.py"...
+2024-01-23T05:21:12Z INFO 3535 [Tensorizer]: Successfully built model.
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/DoNothing]: Running DoNothing
+2024-01-23T05:21:12Z INFO 3535 [DoNothing]: Finished (changed=True)
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/DoNothing]: DoNothing finished after 0.000 seconds
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/AliasDependencyInduction]: Running AliasDependencyInduction
+2024-01-23T05:21:12Z INFO 3535 [AliasDependencyInduction]: Finished (changed=False)
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/AliasDependencyInduction]: AliasDependencyInduction finished after 0.002 seconds
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/CanonicalizeIR]: Running CanonicalizeIR
+2024-01-23T05:21:12Z INFO 3535 [CanonicalizeIR]: Finished (changed=True)
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/CanonicalizeIR]: CanonicalizeIR finished after 0.008 seconds
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/LegalizeCCOpLayout]: Running LegalizeCCOpLayout
+2024-01-23T05:21:12Z INFO 3535 [LegalizeCCOpLayout]: Finished (changed=False)
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/LegalizeCCOpLayout]: LegalizeCCOpLayout finished after 0.008 seconds
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/ExpandBatchNorm]: Running ExpandBatchNorm
+2024-01-23T05:21:12Z INFO 3535 [ExpandBatchNorm]: Finished (changed=False)
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/ExpandBatchNorm]: ExpandBatchNorm finished after 0.009 seconds
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/ResolveComplicatePredicates]: Running ResolveComplicatePredicates
+2024-01-23T05:21:12Z INFO 3535 [ResolveComplicatePredicates]: Finished (changed=False)
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/ResolveComplicatePredicates]: ResolveComplicatePredicates finished after 0.007 seconds
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/AffinePredicateResolution]: Running AffinePredicateResolution
+2024-01-23T05:21:12Z INFO 3535 [AffinePredicateResolution]: Finished (changed=False)
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/AffinePredicateResolution]: AffinePredicateResolution finished after 0.008 seconds
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/EliminateDivs]: Running EliminateDivs
+2024-01-23T05:21:12Z INFO 3535 [EliminateDivs]: Finished (changed=False)
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/EliminateDivs]: EliminateDivs finished after 0.008 seconds
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/PerfectLoopNest]: Running PerfectLoopNest
+2024-01-23T05:21:12Z INFO 3535 [PerfectLoopNest]: Finished (changed=False)
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/PerfectLoopNest]: PerfectLoopNest finished after 0.008 seconds
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/Simplifier]: Running Simplifier
+2024-01-23T05:21:12Z INFO 3535 [Simplifier]: Finished (changed=True)
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/Simplifier]: Simplifier finished after 0.032 seconds
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/GenericAccessSimplifier]: Running GenericAccessSimplifier
+2024-01-23T05:21:12Z INFO 3535 [GenericAccessSimplifier]: Finished (changed=False)
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/GenericAccessSimplifier]: GenericAccessSimplifier finished after 0.008 seconds
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/TCTransform]: Running TCTransform
+2024-01-23T05:21:12Z INFO 3535 [TCTransform]: Finished (changed=True)
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/TCTransform]: TCTransform finished after 0.013 seconds
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/CommuteConcat]: Running CommuteConcat
+2024-01-23T05:21:12Z INFO 3535 [CommuteConcat]: Finished (changed=False)
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/CommuteConcat]: CommuteConcat finished after 0.008 seconds
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/LowerTensorOp]: Running LowerTensorOp
+2024-01-23T05:21:12Z INFO 3535 [LowerTensorOp]: Finished (changed=True)
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/LowerTensorOp]: LowerTensorOp finished after 0.148 seconds
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/TCTransform]: Running TCTransform
+2024-01-23T05:21:12Z INFO 3535 [TCTransform]: Finished (changed=False)
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/TCTransform]: TCTransform finished after 0.018 seconds
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/CanonicalizeIR]: Running CanonicalizeIR
+2024-01-23T05:21:12Z INFO 3535 [CanonicalizeIR]: Finished (changed=False)
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/CanonicalizeIR]: CanonicalizeIR finished after 0.014 seconds
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/TensorOpFusion]: Running TensorOpFusion
+2024-01-23T05:21:12Z INFO 3535 [TensorOpFusion]: Finished (changed=True)
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/TensorOpFusion]: TensorOpFusion finished after 0.020 seconds
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/TensorOpTransform]: Running TensorOpTransform
+2024-01-23T05:21:12Z INFO 3535 [TensorOpTransform]: Finished (changed=True)
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/TensorOpTransform]: TensorOpTransform finished after 0.116 seconds
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/LateLowerTensorOp]: Running LateLowerTensorOp
+2024-01-23T05:21:12Z INFO 3535 [LateLowerTensorOp]: Finished (changed=True)
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/LateLowerTensorOp]: LateLowerTensorOp finished after 0.050 seconds
+2024-01-23T05:21:12Z USER 3535 [sg0000/Tensorizer/MemcpyElimination]: Running MemcpyElimination
+2024-01-23T05:21:14Z INFO 3535 [MemcpyElimination]: Finished (changed=True)
+2024-01-23T05:21:14Z USER 3535 [sg0000/Tensorizer/MemcpyElimination]: MemcpyElimination finished after 1.554 seconds
+2024-01-23T05:21:14Z USER 3535 [sg0000/Tensorizer/LoopFusion]: Running LoopFusion
+2024-01-23T05:21:14Z INFO 3535 [LoopFusion]: Finished (changed=True)
+2024-01-23T05:21:14Z USER 3535 [sg0000/Tensorizer/LoopFusion]: LoopFusion finished after 0.579 seconds
+2024-01-23T05:21:14Z USER 3535 [sg0000/Tensorizer/Simplifier]: Running Simplifier
+2024-01-23T05:21:14Z INFO 3535 [Simplifier]: Finished (changed=True)
+2024-01-23T05:21:14Z USER 3535 [sg0000/Tensorizer/Simplifier]: Simplifier finished after 0.040 seconds
+2024-01-23T05:21:14Z USER 3535 [sg0000/Tensorizer/Delinearization]: Running Delinearization
+2024-01-23T05:21:14Z INFO 3535 [Delinearization]: Finished (changed=True)
+2024-01-23T05:21:14Z USER 3535 [sg0000/Tensorizer/Delinearization]: Delinearization finished after 0.044 seconds
+2024-01-23T05:21:14Z USER 3535 [sg0000/Tensorizer/AliasDependencyElimination]: Running AliasDependencyElimination
+2024-01-23T05:21:14Z INFO 3535 [AliasDependencyElimination]: Finished (changed=False)
+2024-01-23T05:21:14Z USER 3535 [sg0000/Tensorizer/AliasDependencyElimination]: AliasDependencyElimination finished after 0.008 seconds
+2024-01-23T05:21:14Z USER 3535 [sg0000/Tensorizer/DeadStoreElimination]: Running DeadStoreElimination
+2024-01-23T05:21:15Z INFO 3535 [DeadStoreElimination]: Finished (changed=True)
+2024-01-23T05:21:15Z USER 3535 [sg0000/Tensorizer/DeadStoreElimination]: DeadStoreElimination finished after 0.790 seconds
+2024-01-23T05:21:15Z USER 3535 [sg0000/Tensorizer/AliasDependencyInduction]: Running AliasDependencyInduction
+2024-01-23T05:21:15Z INFO 3535 [AliasDependencyInduction]: Finished (changed=False)
+2024-01-23T05:21:15Z USER 3535 [sg0000/Tensorizer/AliasDependencyInduction]: AliasDependencyInduction finished after 0.001 seconds
+2024-01-23T05:21:15Z USER 3535 [sg0000/Tensorizer/Simplifier]: Running Simplifier
+2024-01-23T05:21:15Z INFO 3535 [Simplifier]: Finished (changed=True)
+2024-01-23T05:21:15Z USER 3535 [sg0000/Tensorizer/Simplifier]: Simplifier finished after 0.037 seconds
+2024-01-23T05:21:15Z USER 3535 [sg0000/Tensorizer/LICM]: Running LICM
+2024-01-23T05:21:15Z INFO 3535 [LICM]: Finished (changed=True)
+2024-01-23T05:21:15Z USER 3535 [sg0000/Tensorizer/LICM]: LICM finished after 0.018 seconds
+2024-01-23T05:21:15Z USER 3535 [sg0000/Tensorizer/Delinearization]: Running Delinearization
+2024-01-23T05:21:15Z INFO 3535 [Delinearization]: Finished (changed=False)
+2024-01-23T05:21:15Z USER 3535 [sg0000/Tensorizer/Delinearization]: Delinearization finished after 0.019 seconds
+2024-01-23T05:21:15Z USER 3535 [sg0000/Tensorizer/LoopFusion]: Running LoopFusion
+2024-01-23T05:21:15Z INFO 3535 [LoopFusion]: Finished (changed=False)
+2024-01-23T05:21:15Z USER 3535 [sg0000/Tensorizer/LoopFusion]: LoopFusion finished after 0.176 seconds
+2024-01-23T05:21:15Z USER 3535 [sg0000/Tensorizer/SimplifySlice]: Running SimplifySlice
+2024-01-23T05:21:15Z INFO 3535 [SimplifySlice]: Finished (changed=False)
+2024-01-23T05:21:15Z USER 3535 [sg0000/Tensorizer/SimplifySlice]: SimplifySlice finished after 0.008 seconds
+2024-01-23T05:21:15Z USER 3535 [sg0000/Tensorizer/LICM]: Running LICM
+2024-01-23T05:21:16Z INFO 3535 [LICM]: Finished (changed=True)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/LICM]: LICM finished after 0.016 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/Simplifier]: Running Simplifier
+2024-01-23T05:21:16Z INFO 3535 [Simplifier]: Finished (changed=True)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/Simplifier]: Simplifier finished after 0.037 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/ValueNumbering]: Running ValueNumbering
+2024-01-23T05:21:16Z INFO 3535 [ValueNumbering]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/ValueNumbering]: ValueNumbering finished after 0.019 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/LICM]: Running LICM
+2024-01-23T05:21:16Z INFO 3535 [LICM]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/LICM]: LICM finished after 0.013 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/PadElimination]: Running PadElimination
+2024-01-23T05:21:16Z INFO 3535 [PadElimination]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/PadElimination]: PadElimination finished after 0.001 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/Delinearization]: Running Delinearization
+2024-01-23T05:21:16Z INFO 3535 [Delinearization]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/Delinearization]: Delinearization finished after 0.016 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/LoopFusion]: Running LoopFusion
+2024-01-23T05:21:16Z INFO 3535 [LoopFusion]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/LoopFusion]: LoopFusion finished after 0.141 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/GenericAccessSimplifier]: Running GenericAccessSimplifier
+2024-01-23T05:21:16Z INFO 3535 [GenericAccessSimplifier]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/GenericAccessSimplifier]: GenericAccessSimplifier finished after 0.008 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/Simplifier]: Running Simplifier
+2024-01-23T05:21:16Z INFO 3535 [Simplifier]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/Simplifier]: Simplifier finished after 0.019 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/LICM]: Running LICM
+2024-01-23T05:21:16Z INFO 3535 [LICM]: Finished (changed=True)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/LICM]: LICM finished after 0.016 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/ValueNumbering]: Running ValueNumbering
+2024-01-23T05:21:16Z INFO 3535 [ValueNumbering]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/ValueNumbering]: ValueNumbering finished after 0.015 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/TCTransform]: Running TCTransform
+2024-01-23T05:21:16Z INFO 3535 [TCTransform]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/TCTransform]: TCTransform finished after 0.009 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/CommuteConcat]: Running CommuteConcat
+2024-01-23T05:21:16Z INFO 3535 [CommuteConcat]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/CommuteConcat]: CommuteConcat finished after 0.008 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/RecognizeOpIdiom]: Running RecognizeOpIdiom
+2024-01-23T05:21:16Z INFO 3535 [RecognizeOpIdiom]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/RecognizeOpIdiom]: RecognizeOpIdiom finished after 0.044 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/MaskPropagation]: Running MaskPropagation
+2024-01-23T05:21:16Z INFO 3535 [MaskPropagation]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/MaskPropagation]: MaskPropagation finished after 0.017 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/Recompute]: Running Recompute
+2024-01-23T05:21:16Z INFO 3535 [Recompute]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/Recompute]: Recompute finished after 0.001 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/DeadCodeElimination]: Running DeadCodeElimination
+2024-01-23T05:21:16Z INFO 3535 [DeadCodeElimination]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/DeadCodeElimination]: DeadCodeElimination finished after 0.008 seconds
+2024-01-23T05:21:16Z INFO 3535 [Tensorizer]: After optimization: 190 statements
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/DoNothing]: Running DoNothing
+2024-01-23T05:21:16Z INFO 3535 [DoNothing]: Finished (changed=True)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/DoNothing]: DoNothing finished after 0.000 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/MutateDataType]: Running MutateDataType
+2024-01-23T05:21:16Z INFO 3535 [MutateDataType]: Finished (changed=True)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/MutateDataType]: MutateDataType finished after 0.007 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/AutoCastTCInputs]: Running AutoCastTCInputs
+2024-01-23T05:21:16Z INFO 3535 [AutoCastTCInputs]: Finished (changed=True)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/AutoCastTCInputs]: AutoCastTCInputs finished after 0.019 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/GenericAccessSimplifier]: Running GenericAccessSimplifier
+2024-01-23T05:21:16Z INFO 3535 [GenericAccessSimplifier]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/GenericAccessSimplifier]: GenericAccessSimplifier finished after 0.008 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/Simplifier]: Running Simplifier
+2024-01-23T05:21:16Z INFO 3535 [Simplifier]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/Simplifier]: Simplifier finished after 0.019 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/AliasDependencyElimination]: Running AliasDependencyElimination
+2024-01-23T05:21:16Z INFO 3535 [AliasDependencyElimination]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/AliasDependencyElimination]: AliasDependencyElimination finished after 0.009 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/DelinearIndices]: Running DelinearIndices
+2024-01-23T05:21:16Z INFO 3535 [DelinearIndices]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/DelinearIndices]: DelinearIndices finished after 0.038 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/Delinearization]: Running Delinearization
+2024-01-23T05:21:16Z INFO 3535 [Delinearization]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/Delinearization]: Delinearization finished after 0.016 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/DelinearIndices]: Running DelinearIndices
+2024-01-23T05:21:16Z INFO 3535 [DelinearIndices]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/DelinearIndices]: DelinearIndices finished after 0.037 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/DeadCodeElimination]: Running DeadCodeElimination
+2024-01-23T05:21:16Z INFO 3535 [DeadCodeElimination]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/DeadCodeElimination]: DeadCodeElimination finished after 0.009 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/InferIntrinsicOnCC]: Running InferIntrinsicOnCC
+2024-01-23T05:21:16Z INFO 3535 [InferIntrinsicOnCC]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/InferIntrinsicOnCC]: InferIntrinsicOnCC finished after 0.107 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/ResolveAccessConflict]: Running ResolveAccessConflict
+2024-01-23T05:21:16Z INFO 3535 [ResolveAccessConflict]: Finished (changed=True)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/ResolveAccessConflict]: ResolveAccessConflict finished after 0.045 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/LICM]: Running LICM
+2024-01-23T05:21:16Z INFO 3535 [LICM]: Finished (changed=True)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/LICM]: LICM finished after 0.018 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/LocalLayoutOpt]: Running LocalLayoutOpt
+2024-01-23T05:21:16Z INFO 3535 [LocalLayoutOpt]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/LocalLayoutOpt]: LocalLayoutOpt finished after 0.085 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/DelinearIndices]: Running DelinearIndices
+2024-01-23T05:21:16Z INFO 3535 [DelinearIndices]: Finished (changed=False)
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/DelinearIndices]: DelinearIndices finished after 0.039 seconds
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/OrigLayoutTilingPipeline]: Running OrigLayoutTilingPipeline
+2024-01-23T05:21:16Z USER 3535 [sg0000/Tensorizer/GlobalLayoutOpt]: Running GlobalLayoutOpt
+2024-01-23T05:21:18Z INFO 3535 [GlobalLayoutOpt]: Finished (changed=True)
+2024-01-23T05:21:18Z USER 3535 [sg0000/Tensorizer/GlobalLayoutOpt]: GlobalLayoutOpt finished after 1.272 seconds
+2024-01-23T05:21:18Z USER 3535 [sg0000/Tensorizer/CanonicalizeDAG]: Running CanonicalizeDAG
+2024-01-23T05:21:18Z INFO 3535 [CanonicalizeDAG]: Finished (changed=True)
+2024-01-23T05:21:18Z USER 3535 [sg0000/Tensorizer/CanonicalizeDAG]: CanonicalizeDAG finished after 0.016 seconds
+2024-01-23T05:21:18Z USER 3535 [sg0000/Tensorizer/FlattenAxesForTiling]: Running FlattenAxesForTiling
+2024-01-23T05:21:18Z INFO 3535 [FlattenAxesForTiling]: Finished (changed=True)
+2024-01-23T05:21:18Z USER 3535 [sg0000/Tensorizer/FlattenAxesForTiling]: FlattenAxesForTiling finished after 0.024 seconds
+2024-01-23T05:21:18Z USER 3535 [sg0000/Tensorizer/SundaSizeTiling]: Running SundaSizeTiling
+2024-01-23T05:21:19Z INFO 3535 [SundaSizeTiling]: Finished (changed=True)
+2024-01-23T05:21:19Z USER 3535 [sg0000/Tensorizer/SundaSizeTiling]: SundaSizeTiling finished after 1.181 seconds
+2024-01-23T05:21:19Z USER 3535 [sg0000/Tensorizer/OrigLayoutTilingPipeline]: OrigLayoutTilingPipeline finished after 2.509 seconds
+2024-01-23T05:21:19Z USER 3535 [sg0000/Tensorizer/TilingProfiler]: Running TilingProfiler
+2024-01-23T05:21:19Z INFO 3535 [TilingProfiler]: Finished (changed=False)
+2024-01-23T05:21:19Z USER 3535 [sg0000/Tensorizer/TilingProfiler]: TilingProfiler finished after 0.076 seconds
+2024-01-23T05:21:19Z USER 3535 [sg0000/Tensorizer/FlattenMacroLoop]: Running FlattenMacroLoop
+2024-01-23T05:21:19Z INFO 3535 [FlattenMacroLoop]: Finished (changed=True)
+2024-01-23T05:21:19Z USER 3535 [sg0000/Tensorizer/FlattenMacroLoop]: FlattenMacroLoop finished after 0.065 seconds
+2024-01-23T05:21:19Z USER 3535 [sg0000/Tensorizer/InferTongaTensor]: Running InferTongaTensor
+2024-01-23T05:21:19Z INFO 3535 [InferTongaTensor]: Finished (changed=True)
+2024-01-23T05:21:19Z USER 3535 [sg0000/Tensorizer/InferTongaTensor]: InferTongaTensor finished after 0.384 seconds
+2024-01-23T05:21:19Z USER 3535 [sg0000/Tensorizer/TongaSimplifier]: Running TongaSimplifier
+2024-01-23T05:21:20Z INFO 3535 [TongaSimplifier]: Finished (changed=True)
+2024-01-23T05:21:20Z USER 3535 [sg0000/Tensorizer/TongaSimplifier]: TongaSimplifier finished after 0.251 seconds
+2024-01-23T05:21:20Z USER 3535 [sg0000/Tensorizer/LICM]: Running LICM
+2024-01-23T05:21:20Z INFO 3535 [LICM]: Finished (changed=True)
+2024-01-23T05:21:20Z USER 3535 [sg0000/Tensorizer/LICM]: LICM finished after 0.029 seconds
+2024-01-23T05:21:20Z USER 3535 [sg0000/Tensorizer/RewriteReplicationMatmul]: Running RewriteReplicationMatmul
+2024-01-23T05:21:20Z INFO 3535 [RewriteReplicationMatmul]: Finished (changed=False)
+2024-01-23T05:21:20Z USER 3535 [sg0000/Tensorizer/RewriteReplicationMatmul]: RewriteReplicationMatmul finished after 0.017 seconds
+2024-01-23T05:21:20Z USER 3535 [sg0000/Tensorizer/FlattenMacroLoop]: Running FlattenMacroLoop
+2024-01-23T05:21:20Z INFO 3535 [FlattenMacroLoop]: Finished (changed=True)
+2024-01-23T05:21:20Z USER 3535 [sg0000/Tensorizer/FlattenMacroLoop]: FlattenMacroLoop finished after 0.065 seconds
+2024-01-23T05:21:20Z USER 3535 [sg0000/Tensorizer/SimplifyMacroPredicates]: Running SimplifyMacroPredicates
+2024-01-23T05:21:20Z INFO 3535 [SimplifyMacroPredicates]: Finished (changed=False)
+2024-01-23T05:21:20Z USER 3535 [sg0000/Tensorizer/SimplifyMacroPredicates]: SimplifyMacroPredicates finished after 0.155 seconds
+2024-01-23T05:21:20Z USER 3535 [sg0000/Tensorizer/DataLocalityOpt]: Running DataLocalityOpt
+2024-01-23T05:21:20Z INFO 3535 [DataLocalityOpt]: Finished (changed=True)
+2024-01-23T05:21:20Z USER 3535 [sg0000/Tensorizer/DataLocalityOpt]: DataLocalityOpt finished after 0.224 seconds
+2024-01-23T05:21:20Z USER 3535 [sg0000/Tensorizer/TongaSimplifier]: Running TongaSimplifier
+2024-01-23T05:21:20Z INFO 3535 [TongaSimplifier]: Finished (changed=False)
+2024-01-23T05:21:20Z USER 3535 [sg0000/Tensorizer/TongaSimplifier]: TongaSimplifier finished after 0.082 seconds
+2024-01-23T05:21:20Z USER 3535 [sg0000/Tensorizer/LegalizeSundaMacro]: Running LegalizeSundaMacro
+2024-01-23T05:21:20Z USER 3535 [sg0000/Tensorizer/LegalizeSundaMacro]: LegalizeSundaMacro finished after 0.016 seconds
+2024-01-23T05:21:20Z ERROR 3535 [Tensorizer]: Transformation error on operator: _gather.1446
+2024-01-23T05:21:20Z ERROR 3535 [NeuronAssert]: Assertion failure in usr/lib/python3.8/multiprocessing/process.py at line 108
+2024-01-23T05:21:20Z INFO 3535 [root/Tensorizer/All]: Exit time region: delta=9.189s
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]: ***************************************************************
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:  An Internal Compiler Error has occurred
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]: ***************************************************************
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]: 
+2024-01-23T05:21:20Z USER 3535 [neuronxcc.driver.CommandDriver]: [TEN404] (_gather.1446) Internal tensorizer error - Please open a support ticket at https://github.com/aws-neuron/aws-neuron-sdk/issues/new
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]: 
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]: Internal details:
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]: Type: <class 'neuronxcc.logging.Assert.NeuronAssertionError'>
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/driver/CommandDriver.py", line 343, in neuronxcc.driver.CommandDriver.CommandDriver.run_subcommand
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/driver/commands/CompileCommand.py", line 1184, in neuronxcc.driver.commands.CompileCommand.CompileCommand.run
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/driver/commands/CompileCommand.py", line 1143, in neuronxcc.driver.commands.CompileCommand.CompileCommand.runPipeline
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/driver/commands/CompileCommand.py", line 1160, in neuronxcc.driver.commands.CompileCommand.CompileCommand.runPipeline
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/driver/commands/CompileCommand.py", line 1163, in neuronxcc.driver.commands.CompileCommand.CompileCommand.runPipeline
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/driver/Job.py", line 344, in neuronxcc.driver.Job.SingleInputJob.run
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/driver/Job.py", line 370, in neuronxcc.driver.Job.SingleInputJob.runOnState
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/driver/Pipeline.py", line 30, in neuronxcc.driver.Pipeline.Pipeline.runSingleInput
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/driver/Job.py", line 344, in neuronxcc.driver.Job.SingleInputJob.run
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/driver/Job.py", line 370, in neuronxcc.driver.Job.SingleInputJob.runOnState
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/driver/jobs/Frontend.py", line 405, in neuronxcc.driver.jobs.Frontend.Frontend.runSingleInput
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/driver/jobs/Frontend.py", line 205, in neuronxcc.driver.jobs.Frontend.Frontend.runXLAFrontend
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/driver/jobs/Frontend.py", line 210, in neuronxcc.driver.jobs.Frontend.Frontend.runXLAFrontend
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/Penguin.py", line 329, in neuronxcc.starfish.penguin.Penguin.runPenguin
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/Frontend.py", line 138, in neuronxcc.starfish.penguin.Frontend.tensorizeXla
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/Frontend.py", line 139, in neuronxcc.starfish.penguin.Frontend.tensorizeXla
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/Frontend.py", line 147, in neuronxcc.starfish.penguin.Frontend.tensorizeXla
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/Frontend.py", line 253, in neuronxcc.starfish.penguin.Frontend.tensorizeXlaFromFile
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/Compile.py", line 236, in neuronxcc.starfish.penguin.Compile.compile_module
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/Compile.py", line 239, in neuronxcc.starfish.penguin.Compile.compile_module
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/Compile.py", line 288, in neuronxcc.starfish.penguin.Compile.compile_module
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 499, in neuronxcc.starfish.penguin.DotTransform.PassManager.transformModule
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 520, in neuronxcc.starfish.penguin.DotTransform.PassManager.transformFunction
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 531, in neuronxcc.starfish.penguin.DotTransform.PassManager.transformFunction
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 162, in neuronxcc.starfish.penguin.DotTransform.DotTransform.runOnFunction
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 240, in neuronxcc.starfish.penguin.DotTransform.DotTransform.run_with_exception_handling
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 255, in neuronxcc.starfish.penguin.DotTransform.DotTransform.rethrow_exception
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/logging/Assert.py", line 75, in neuronxcc.logging.Assert.neuron_assert
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]: Cause:
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 228, in neuronxcc.starfish.penguin.DotTransform.DotTransform.run_with_exception_handling
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 268, in neuronxcc.starfish.penguin.DotTransform.DotTransform.timed_run_
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 270, in neuronxcc.starfish.penguin.DotTransform.DotTransform.timed_run_
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 271, in neuronxcc.starfish.penguin.DotTransform.DotTransform.timed_run_
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 300, in neuronxcc.starfish.penguin.DotTransform.DotTransform.run_
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 302, in neuronxcc.starfish.penguin.DotTransform.DotTransform.run_
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 398, in neuronxcc.starfish.penguin.DotTransform.DotTransform.transformFunction
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 399, in neuronxcc.starfish.penguin.DotTransform.DotTransform.transformFunction
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 390, in neuronxcc.starfish.penguin.DotTransform.DotTransform.runTransforms
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 379, in neuronxcc.starfish.penguin.DotTransform.DotTransform.transformStmts
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 153, in neuronxcc.starfish.penguin.DotTransform.DotTransform.transform
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 431, in neuronxcc.starfish.penguin.DotTransform.DotTransform.transformBasicBlock
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 434, in neuronxcc.starfish.penguin.DotTransform.DotTransform.transformBasicBlock
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 153, in neuronxcc.starfish.penguin.DotTransform.DotTransform.transform
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 421, in neuronxcc.starfish.penguin.DotTransform.DotTransform.transformStmt
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 153, in neuronxcc.starfish.penguin.DotTransform.DotTransform.transform
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 421, in neuronxcc.starfish.penguin.DotTransform.DotTransform.transformStmt
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 153, in neuronxcc.starfish.penguin.DotTransform.DotTransform.transform
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 421, in neuronxcc.starfish.penguin.DotTransform.DotTransform.transformStmt
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 153, in neuronxcc.starfish.penguin.DotTransform.DotTransform.transform
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 421, in neuronxcc.starfish.penguin.DotTransform.DotTransform.transformStmt
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/DotTransform.py", line 153, in neuronxcc.starfish.penguin.DotTransform.DotTransform.transform
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/targets/sunda/passes/LegalizeSundaMacro.py", line 31, in neuronxcc.starfish.penguin.targets.sunda.passes.LegalizeSundaMacro.LegalizeSundaMacro.transformTIndirectDMAOperator
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/targets/sunda/Sunda.py", line 371, in neuronxcc.starfish.penguin.targets.sunda.Sunda.Sunda.can_lower_generic_to_tensor_copy
+2024-01-23T05:21:20Z ERROR 3535 [neuronxcc.driver.CommandDriver]:   File "neuronxcc/starfish/penguin/ir/Access.py", line 827, in neuronxcc.starfish.penguin.ir.Access.GenericLoadStore.get_indirect_dim_and_value
+2024-01-23T05:21:20Z USER 3535 [neuronxcc.driver.CommandDriver]: 
+2024-01-23T05:21:20Z USER 3535 [neuronxcc.driver.CommandDriver]: Diagnostic information:
+2024-01-23T05:21:20Z USER 3535 [neuronxcc.driver.CommandDriver]:   NeuronX Compiler version 2.12.54.0+f631c2365
+2024-01-23T05:21:20Z USER 3535 [neuronxcc.driver.CommandDriver]:   
+2024-01-23T05:21:20Z USER 3535 [neuronxcc.driver.CommandDriver]:   Python version 3.8.10
+2024-01-23T05:21:20Z USER 3535 [neuronxcc.driver.CommandDriver]:   HWM version 2.12.0.0-422c9037c
+2024-01-23T05:21:20Z USER 3535 [neuronxcc.driver.CommandDriver]:   NumPy version 1.24.4
+2024-01-23T05:21:20Z USER 3535 [neuronxcc.driver.CommandDriver]:   
+2024-01-23T05:21:20Z USER 3535 [neuronxcc.driver.CommandDriver]:   Running on AMI ami-06ab1b228b2610fbe
+2024-01-23T05:21:20Z USER 3535 [neuronxcc.driver.CommandDriver]:   Running in region apse1-az3
+2024-01-23T05:21:20Z USER 3535 [neuronxcc.driver.CommandDriver]: 
+2024-01-23T05:21:20Z USER 3535 [neuronxcc.driver.CommandDriver]: Diagnostic logs stored in /home/ubuntu/LightGlue/inf/log-neuron-cc.txt
+2024-01-23T05:21:20Z INFO 3535 [neuronxcc.driver.CommandDriver]: Artifacts stored in: /home/ubuntu/LightGlue/inf/neuronxcc-uvkivq86
+2024-01-23T05:21:20Z INFO 3528 [root]: Subcommand returned with exitcode=70

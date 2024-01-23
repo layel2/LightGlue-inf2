@@ -267,7 +267,7 @@ def sigmoid_log_double_softmax(
     scores[:, -1, :-1] = F.logsigmoid(-z1.squeeze(-1))
     return scores
 
-
+from types import SimpleNamespace
 class MatchAssignment(nn.Module):
     def __init__(self, dim: int) -> None:
         super().__init__()
@@ -332,6 +332,7 @@ class LightGlue(nn.Module):
         "mps": -1,
         "cuda": 1024,
         "flash": 1536,
+        "xla": -1,
     }
 
     required_data_keys = ["image0", "image1"]
@@ -579,14 +580,14 @@ class LightGlue(nn.Module):
             "matches1": m1,
             "matching_scores0": mscores0,
             "matching_scores1": mscores1,
-            "stop": i + 1,
-            "matches": matches,
-            "scores": mscores,
+            "stop": torch.tensor(i + 1).to(device),
+            "matches": torch.stack(matches).to(device),
+            "scores": torch.stack(mscores).to(device),
             "prune0": prune0,
             "prune1": prune1,
         }
 
-        return pred
+        return list(pred.values())
 
     def confidence_threshold(self, layer_index: int) -> float:
         """scaled confidence threshold"""
